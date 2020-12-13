@@ -1,5 +1,5 @@
 import refs from "./refs.js";
-const { menu: menuRef, bodyRef, toggleInputRef } = refs;
+const { menu: menuRef, body: bodyRef, toggleInput: toggleInputRef } = refs;
 
 import menuItems from "../data/menu.json";
 
