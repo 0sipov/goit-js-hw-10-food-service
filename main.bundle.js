@@ -1765,8 +1765,8 @@ var _data_menu_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webp
 /* harmony import */ var _templates_menu_hbs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_templates_menu_hbs__WEBPACK_IMPORTED_MODULE_2__);
 
 var menuRef = _refs_js__WEBPACK_IMPORTED_MODULE_0__["default"].menu,
-    bodyRef = _refs_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyRef,
-    toggleInputRef = _refs_js__WEBPACK_IMPORTED_MODULE_0__["default"].toggleInputRef;
+    bodyRef = _refs_js__WEBPACK_IMPORTED_MODULE_0__["default"].body,
+    toggleInputRef = _refs_js__WEBPACK_IMPORTED_MODULE_0__["default"].toggleInput;
 
  // Call hbs function that returns the finished markup
 
