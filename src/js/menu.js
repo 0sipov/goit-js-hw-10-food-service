@@ -1,26 +1,28 @@
 import refs from "./refs.js";
-const { menu: menuRef } = refs;
+const { menu: menuRef, bodyRef, toggleInputRef } = refs;
 
 import menuItems from "../data/menu.json";
 
 import menuTemplate from "../templates/menu.hbs";
+// Call hbs function that returns the finished markup
 let menuMarkup = menuTemplate(menuItems);
-
+// Adds menu markup to the page
 menuRef.innerHTML = menuMarkup;
 
 const Theme = {
   LIGHT: "light-theme",
   DARK: "dark-theme",
 };
+
 let currentTheme = getThemeStorage();
 
 if (currentTheme === Theme.DARK) {
-  refs.toggleInput.checked = true;
+  toggleInputRef.checked = true;
 }
 
 toggleTheme(currentTheme);
 
-refs.toggleInput.addEventListener("change", function () {
+toggleInputRef.addEventListener("change", function () {
   let themeName = this.checked ? Theme.DARK : Theme.LIGHT;
 
   setThemeStorage(themeName);
@@ -28,7 +30,7 @@ refs.toggleInput.addEventListener("change", function () {
 });
 
 function addClassToBody(themeName) {
-  toggleClass(refs.body, themeName);
+  toggleClass(bodyRef, themeName);
 }
 
 function getThemeStorage() {
