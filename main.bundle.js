@@ -1777,33 +1777,25 @@ var Theme = {
   LIGHT: "light-theme",
   DARK: "dark-theme"
 };
-var currentTheme = getThemeStorage();
+var currentTheme = localStorage.getItem("theme");
 
 if (currentTheme === Theme.DARK) {
   toggleInputRef.checked = true;
 }
 
-toggleTheme(currentTheme);
+addClassToBody(localStorage.getItem("theme"));
 toggleInputRef.addEventListener("change", function () {
   var themeName = this.checked ? Theme.DARK : Theme.LIGHT;
-  setThemeStorage(themeName);
-  toggleTheme(themeName);
+  localStorage.setItem("theme", themeName);
+  addClassToBody(themeName);
 });
 
 function addClassToBody(themeName) {
-  toggleClass(bodyRef, themeName);
-}
-
-function getThemeStorage() {
-  return localStorage.getItem("theme");
-}
-
-function setThemeStorage(themeName) {
-  localStorage.setItem("theme", themeName);
-}
-
-function toggleTheme(themeName) {
-  addClassToBody(themeName);
+  if (currentTheme === "light-theme" || "dark-theme") {
+    toggleClass(bodyRef, themeName);
+  } else {
+    themeName = "light-theme";
+  }
 }
 
 function toggleClass(elem, currentClass) {
@@ -1866,7 +1858,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + "\" class=\"menu__item\">\r\n    <article class=\"card\">\r\n        <img src=\""
     + alias4(((helper = (helper = lookupProperty(helpers,"image") || (depth0 != null ? lookupProperty(depth0,"image") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"image","hash":{},"data":data,"loc":{"start":{"line":4,"column":18},"end":{"line":4,"column":27}}}) : helper)))
     + "\" alt=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"description") || (depth0 != null ? lookupProperty(depth0,"description") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data,"loc":{"start":{"line":4,"column":34},"end":{"line":4,"column":49}}}) : helper)))
+    + alias4(((helper = (helper = lookupProperty(helpers,"name") || (depth0 != null ? lookupProperty(depth0,"name") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data,"loc":{"start":{"line":4,"column":34},"end":{"line":4,"column":42}}}) : helper)))
     + "\" class=\"card__image\">\r\n        <div class=\"card__content\">\r\n            <h2 class=\"card__name\">"
     + alias4(((helper = (helper = lookupProperty(helpers,"name") || (depth0 != null ? lookupProperty(depth0,"name") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data,"loc":{"start":{"line":6,"column":35},"end":{"line":6,"column":43}}}) : helper)))
     + "</h2>\r\n            <p class=\"card__price\">\r\n                <i class=\"material-icons\"> monetization_on </i>\r\n                "
