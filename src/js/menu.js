@@ -13,27 +13,23 @@ const Theme = {
   LIGHT: "light-theme",
   DARK: "dark-theme",
 };
-
-let currentTheme = localStorage.getItem("theme");
-
+let currentTheme;
+if (localStorage.getItem("theme") === null) {
+  currentTheme = Theme.LIGHT;
+} else {
+  currentTheme = localStorage.getItem("theme");
+}
 if (currentTheme === Theme.DARK) {
   toggleInputRef.checked = true;
 }
-
-addClassToBody(localStorage.getItem("theme"));
-
+addClassToBody(currentTheme);
 toggleInputRef.addEventListener("change", function () {
   let themeName = this.checked ? Theme.DARK : Theme.LIGHT;
   localStorage.setItem("theme", themeName);
   addClassToBody(themeName);
 });
-
 function addClassToBody(themeName) {
-  if (currentTheme === "light-theme" || "dark-theme") {
-    toggleClass(bodyRef, themeName);
-  } else {
-    themeName = "light-theme";
-  }
+  toggleClass(bodyRef, themeName);
 }
 function toggleClass(elem, currentClass) {
   elem.className = "";
