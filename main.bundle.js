@@ -1777,13 +1777,19 @@ var Theme = {
   LIGHT: "light-theme",
   DARK: "dark-theme"
 };
-var currentTheme = localStorage.getItem("theme");
+var currentTheme;
+
+if (localStorage.getItem("theme") === null) {
+  currentTheme = Theme.LIGHT;
+} else {
+  currentTheme = localStorage.getItem("theme");
+}
 
 if (currentTheme === Theme.DARK) {
   toggleInputRef.checked = true;
 }
 
-addClassToBody(localStorage.getItem("theme"));
+addClassToBody(currentTheme);
 toggleInputRef.addEventListener("change", function () {
   var themeName = this.checked ? Theme.DARK : Theme.LIGHT;
   localStorage.setItem("theme", themeName);
@@ -1791,11 +1797,7 @@ toggleInputRef.addEventListener("change", function () {
 });
 
 function addClassToBody(themeName) {
-  if (currentTheme === "light-theme" || "dark-theme") {
-    toggleClass(bodyRef, themeName);
-  } else {
-    themeName = "light-theme";
-  }
+  toggleClass(bodyRef, themeName);
 }
 
 function toggleClass(elem, currentClass) {
